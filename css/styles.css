@@ -1,0 +1,106 @@
+/* CONFIGURACIÓN GLOBAL & RESETS*/
+/* Reset básico para asegurar consistencia entre navegadores */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+   /*  Variables para los colores */
+    --color-principal: #3D2C8D;
+    --color-secundario: #6C4AB6;
+    --color-acento: #FFD93D;
+    --color-fondo: #F7F5FF;
+    --color-superficie: #FFFFFF;
+    --color-texto: #252238;
+
+    /*Variables para los espacios basados en rem para accesibilidad*/
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+}
+
+body {
+    background-color: var(--color-fondo);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--color-texto);
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--color-principal);
+    color: var(--color-superficie);
+    text-align: center;
+    padding: var(--space-xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.controles {
+    background-color: var(--color-superficie);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-radius: 12px;
+}
+
+/* Selector de tamaño de la paleta */
+#tamanioPaleta {
+    padding: var(--space-sm);
+    border: 2px solid var(--color-secundario);
+    border-radius: 8px;
+    background-color: var(--color-superficie);
+    color: var(--color-texto);
+    cursor: pointer;
+}
+
+/* Botón principal de acción */
+#btnGenerarPaleta {
+    background-color: var(--color-acento);
+    color: var(--color-texto);
+    border: none;
+    padding: var(--space-md);
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* --- Estados Interactivos (Hover & Focus) --- */
+#btnGenerarPaleta:hover {
+    transform: translateY(-2px);
+}
+
+/* Accesibilidad mediante teclado para usuarios que no usan mouse */
+#btnGenerarPaleta:focus-visible,  #tamanioPaleta:focus-visible {
+    outline: 3px solid var(--color-secundario);
+    outline-offset: 3px;
+}
+
+/* VISUALIZADOR DE PALETA */
+.paleta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+#contenedorColores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+}

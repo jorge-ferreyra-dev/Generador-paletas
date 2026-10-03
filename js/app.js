@@ -23,9 +23,21 @@ botonGenerar.addEventListener('click', function() {
 
     for(let i = 0; i < tamanio ; i++){
         const color = generarColorHex();
+
+        //Generar la tarjeta y agregarla al contenedor
         const tarjetaColor = document.createElement('div');
-        tarjetaColor.textContent = color;
-        tarjetaColor.style.backgroundColor = color;
+        tarjetaColor.classList.add('color');
         contenedorColores.appendChild(tarjetaColor);
+
+        //Agregar un div hijo dentro de cada tarjeta
+        const muestraColor = document.createElement('div');
+        muestraColor.classList.add('muestra-color');
+        muestraColor.style.backgroundColor = color;
+        tarjetaColor.appendChild(muestraColor);
+
+        //Generar el elemento span para mostrar el codigo del color
+        const codigoColor = document.createElement('span');
+        codigoColor.textContent = color;
+        tarjetaColor.appendChild(codigoColor);
     }
 });

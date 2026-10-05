@@ -2,6 +2,7 @@
 const selectorPaleta = document.getElementById('tamanioPaleta');
 const botonGenerar = document.getElementById('btnGenerarPaleta');
 const contenedorColores = document.getElementById('contenedorColores');
+const mensajeFeedback = document.getElementById('mensajeFeedback');
 
 
     //Funciones
@@ -103,5 +104,11 @@ botonGenerar.addEventListener('click', function() {
         const codigoHsl = document.createElement('span');
         codigoHsl.textContent = colorHsl;
         infoColor.appendChild(codigoHsl);
+
+        //Generar mensaje microfeedback
+        mensajeFeedback.textContent = '¡Nueva paleta generada!';
+        setTimeout(function() {
+            mensajeFeedback.textContent = '';
+        }, 2000);
     }
 });

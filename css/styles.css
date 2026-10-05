@@ -121,6 +121,7 @@ main {
     min-height: 120px;
 }
 
+/*Contenedor con los códigos de los colores*/
 .info-color {
     padding: var(--space-md);
     width: 100%;
@@ -129,4 +130,11 @@ main {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
+}
+
+/*Mensaje microfeedback*/
+#mensajeFeedback {
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-principal);
 }

@@ -5,7 +5,7 @@ const contenedorColores = document.getElementById('contenedorColores');
 
 
     //Funciones
-    function generarColorHex() {
+function generarColorHex() {
         const caracteresHex = "0123456789ABCDEF";
         let color = "#";
         for(let i = 0; i < 6; i++) {
@@ -14,7 +14,61 @@ const contenedorColores = document.getElementById('contenedorColores');
             color += caracter;
         }
         return color;
-    };
+};
+
+function convertirHexAHsl(color) {
+
+    // Convertir HEX a RGB y normalizar los valores entre 0 y 1
+    let r = parseInt(color.slice(1, 3), 16) / 255;
+    let g = parseInt(color.slice(3, 5), 16) / 255;
+    let b = parseInt(color.slice(5), 16) / 255;
+
+    // Buscar el canal RGB mayor y menor
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+
+    // Calcular luminosidad y diferencia entre canales
+    let l = (max + min) / 2;
+    const delta = max - min;
+
+    let h;
+    let s;
+
+    // Si no hay diferencia entre canales, el color es gris
+    if (delta === 0) {
+        h = 0;
+        s = 0;
+
+    } else {
+
+        // Calcular saturación según la luminosidad
+        if (l <= 0.5) {
+            s = delta / (max + min);
+        } else {
+            s = delta / (2 - max - min);
+        }
+
+        // Calcular el tono según el canal dominante
+        if (max === r) {
+            h = (g - b) / delta;
+        } else if (max === g) {
+            h = 2 + (b - r) / delta;
+        } else {
+            h = 4 + (r - g) / delta;
+        }
+    }
+    h = h * 60;
+    if (h < 0) {
+    h = h + 360;
+    }
+    // Redondear H y convertir S y L a porcentaje
+    h = Math.round(h);
+    s = Math.round(s * 100);
+    l = Math.round(l * 100);
+    
+    return `hsl(${h}, ${s}%, ${l}%)`;
+}
+
 
     //Eventos    
 botonGenerar.addEventListener('click', function() {
@@ -23,7 +77,8 @@ botonGenerar.addEventListener('click', function() {
 
     for(let i = 0; i < tamanio ; i++){
         const color = generarColorHex();
-
+        const colorHsl = convertirHexAHsl(color);
+        
         //Generar la tarjeta y agregarla al contenedor
         const tarjetaColor = document.createElement('div');
         tarjetaColor.classList.add('color');
@@ -35,9 +90,18 @@ botonGenerar.addEventListener('click', function() {
         muestraColor.style.backgroundColor = color;
         tarjetaColor.appendChild(muestraColor);
 
+        //Generar un contenedor para los códigos de los colores
+        const infoColor = document.createElement('div');
+        infoColor.classList.add('info-color');
+        tarjetaColor.appendChild(infoColor);
+
         //Generar el elemento span para mostrar el codigo del color
-        const codigoColor = document.createElement('span');
-        codigoColor.textContent = color;
-        tarjetaColor.appendChild(codigoColor);
+        const codigoHex = document.createElement('span');
+        codigoHex.textContent = color;
+        infoColor.appendChild(codigoHex);
+
+        const codigoHsl = document.createElement('span');
+        codigoHsl.textContent = colorHsl;
+        infoColor.appendChild(codigoHsl);
     }
 });

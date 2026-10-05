@@ -121,8 +121,12 @@ main {
     min-height: 120px;
 }
 
-.color span {
+.info-color {
     padding: var(--space-md);
     width: 100%;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
 }

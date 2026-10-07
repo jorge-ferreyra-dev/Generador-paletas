@@ -70,6 +70,13 @@ function convertirHexAHsl(color) {
     return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
+function copiarColor(color) {
+    navigator.clipboard.writeText(color);
+    mensajeFeedback.textContent = `¡Color ${color} copiado!`;
+    setTimeout(function(){
+        mensajeFeedback.textContent = '';
+    }, 2000);
+}
 
     //Eventos    
 botonGenerar.addEventListener('click', function() {
@@ -104,6 +111,15 @@ botonGenerar.addEventListener('click', function() {
         const codigoHsl = document.createElement('span');
         codigoHsl.textContent = colorHsl;
         infoColor.appendChild(codigoHsl);
+
+        //Evento para copiar el Hex y HSL al portapapeles
+        codigoHex.addEventListener('click', function() {
+            copiarColor(color);
+        });
+
+        codigoHsl.addEventListener('click', function() {
+            copiarColor(colorHsl);
+        });
 
         //Generar mensaje microfeedback
         mensajeFeedback.textContent = '¡Nueva paleta generada!';

@@ -126,10 +126,10 @@ main {
     padding: var(--space-md);
     width: 100%;
     text-align: center;
-
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
+    cursor: pointer;
 }
 
 /*Mensaje microfeedback*/

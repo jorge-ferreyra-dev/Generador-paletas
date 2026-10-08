@@ -105,11 +105,11 @@ botonGenerar.addEventListener('click', function() {
 
         //Generar el elemento span para mostrar el codigo del color
         const codigoHex = document.createElement('span');
-        codigoHex.textContent = color;
+        codigoHex.textContent = `HEX: ${color}`;
         infoColor.appendChild(codigoHex);
 
         const codigoHsl = document.createElement('span');
-        codigoHsl.textContent = colorHsl;
+        codigoHsl.textContent = `HSL: ${colorHsl}`;
         infoColor.appendChild(codigoHsl);
 
         //Evento para copiar el Hex y HSL al portapapeles
@@ -120,11 +120,10 @@ botonGenerar.addEventListener('click', function() {
         codigoHsl.addEventListener('click', function() {
             copiarColor(colorHsl);
         });
-
-        //Generar mensaje microfeedback
+    }
+    //Generar mensaje microfeedback
         mensajeFeedback.textContent = '¡Nueva paleta generada!';
         setTimeout(function() {
             mensajeFeedback.textContent = '';
         }, 2000);
-    }
 });

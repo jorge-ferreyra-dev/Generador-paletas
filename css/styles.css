@@ -6,6 +6,10 @@
     padding: 0;
 }
 
+html {
+    font-size: 100%;
+}
+
 :root {
    /*  Variables para los colores */
     --color-principal: #3D2C8D;
@@ -148,7 +152,19 @@ main {
 #mensajeFeedback {
     text-align: center;
     font-weight: bold;
-    color: var(--color-principal);
+    background-color: var(--color-principal);
+    color: var(--color-superficie);
+    border-radius: 10px;
+    padding: var(--space-md);
+    position: fixed;
+    bottom: 20px;
+    z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#mensajeFeedback:empty {
+    display: none; /*pseudoclase para elementos vacios*/
 }
 
 /*Design Responsive*/

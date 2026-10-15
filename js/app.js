@@ -103,14 +103,16 @@ botonGenerar.addEventListener('click', function() {
         infoColor.classList.add('info-color');
         tarjetaColor.appendChild(infoColor);
 
-        //Generar el elemento span para mostrar el codigo del color
-        const codigoHex = document.createElement('span');
+        //Generar el elemento button para mostrar el codigo del color
+        const codigoHex = document.createElement('button');
         codigoHex.textContent = `HEX: ${color}`;
         infoColor.appendChild(codigoHex);
+        codigoHex.type = 'button';
 
-        const codigoHsl = document.createElement('span');
+        const codigoHsl = document.createElement('button');
         codigoHsl.textContent = `HSL: ${colorHsl}`;
         infoColor.appendChild(codigoHsl);
+        codigoHsl.type = 'button';
 
         //Evento para copiar el Hex y HSL al portapapeles
         codigoHex.addEventListener('click', function() {

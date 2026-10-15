@@ -93,12 +93,12 @@ main {
     transition: transform 0.2s ease;
 }
 
-/* --- Estados Interactivos (Hover & Focus) --- */
+/*Estados Interactivos (Hover)*/
 #btnGenerarPaleta:hover {
     transform: translateY(-2px);
 }
 
-/* Accesibilidad mediante teclado para usuarios que no usan mouse */
+/*Efecto focus sobre elementos*/
 #btnGenerarPaleta:focus-visible,  #tamanioPaleta:focus-visible {
     outline: 3px solid var(--color-secundario);
     outline-offset: 3px;
@@ -144,8 +144,18 @@ main {
     font-size: clamp(0.875rem, 2vw, 1rem);
 }
 
-.info-color span {
+.info-color button {
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font: inherit;
+}
+
+/*Efecto focus sobre los codigos*/
+.info-color button:focus-visible {
+    outline: 3px solid var(--color-secundario);
+    outline-offset: 3px;
+    border-radius: 10px;
 }
 
 /*Mensaje microfeedback*/

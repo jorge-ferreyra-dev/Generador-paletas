@@ -30,6 +30,8 @@ La herramienta permite generar paletas aleatorias de 6, 8 o 9 colores, visualiza
 
 - Actualización dinámica: permite generar nuevas paletas sin necesidad de recargar la página.
 
+- Guardado y eliminación de paletas: las mismas quedan almacenadas en el localStorage, permaneciendo disponibles al recargar la página en el mismo navegador.
+
 ## Instrucciones de uso
 
 ### Ejecución local
@@ -41,10 +43,13 @@ La herramienta permite generar paletas aleatorias de 6, 8 o 9 colores, visualiza
 5. Hacer clic en **Generar paleta**.
 6. Visualizar los códigos HEX y HSL.
 7. Hacer clic en un código para copiarlo.
+8. Hacer clic en **Guardar paleta**.
+9. Visualizar las paletas guardadas.
+10.Hacer clic en **Eliminar** para borrar la paleta guardada.
 
 ### Versión en línea
 
-El proyecto estará disponible mediante GitHub Pages.
+El proyecto se encuentra disponible en : https://jorge-ferreyra-dev.github.io/Generador-paletas/.
 
 ## Uso de Inteligencia Artificial
 
@@ -73,6 +78,10 @@ Se utilizó IA para comprender la conversión de colores HEX a HSL y su implemen
 5. Revisión y mejoras
 
 Se realizaron consultas para revisar el código, mejorar la organización de las funciones, incorporar mensajes de confirmación y utilizar la API del portapapeles.
+
+6.Guardado de paletas
+
+Se utilizo la IA para implementar la utilización de localStorage y la eliminación de elementos mediante eventos y manipulación del DOM.
 
 ## Reflexión sobre el uso de IA
 

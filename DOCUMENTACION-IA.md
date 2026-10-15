@@ -143,7 +143,7 @@ Posteriormente, se completó la función para obtener los valores HSL y utilizar
 
 ## Consulta 5: Revisión general del proyecto
 
-Objetivo de la consulta:
+**Objetivo de la consulta:**
 
 Realizar una revisión general de los archivos HTML, CSS y JavaScript antes de finalizar el proyecto, con el propósito de identificar errores y posibles mejoras.
 
@@ -179,3 +179,65 @@ Estas modificaciones permitieron mejorar la organización del código y la exper
 ![Devolución para corrección de ChatGpt](capturas/consulta-5b.png)
 ![Devolución para corrección de ChatGpt](capturas/consulta-5c.png)
 ![Devolución para corrección de ChatGpt](capturas/consulta-5d.png)
+
+## Consulta 6: Implementación de guardado de paletas con localStorage
+
+**Objetivo de la consulta:**
+
+Implementar una funcionalidad adicional que permita guardar las paletas de colores generadas y recuperarlas al recargar la página, utilizando localStorage.
+
+Esta mejora corresponde a uno de los extra credits propuestos para el proyecto.
+
+**Prompt utilizado:**
+
+El proyecto lo tengo que entregar hoy, estos son los extra credits para mejorar el proyecto:
+
+Bloqueo de colores.
+
+Guardado de paletas en localStorage.
+
+Animaciones sutiles.
+
+Copiar el código HEX al portapapeles al hacer clic sobre un color.
+
+Mejoras visuales de UI.
+
+Mi idea es desarrollar el guardado de paletas y luego entregar el proyecto, ya que la de copiar los colores ya lo implementé, y las mejoras visuales también las desarrollé con los estilos.
+
+**Resultados obtenidos:**
+
+ChatGPT recomendó concentrarse en implementar el guardado de paletas completas mediante localStorage, evitando agregar funcionalidades innecesarias antes de la entrega.
+
+Propuso utilizar los siguientes conceptos:
+
+Arrays: almacenar los colores de cada paleta.
+
+`push()`: agregar cada color generado al array.
+
+`localStorage.setItem()`: guardar las paletas en el navegador.
+
+`JSON.stringify()`: convertir los arrays a texto para almacenarlos.
+
+`JSON.parse()`: recuperar los datos guardados.
+
+Manipulación del DOM: mostrar las paletas almacenadas en la interfaz.
+
+La IA también propuso desarrollar la funcionalidad progresivamente mediante ejercicios.
+
+**Influencia en el desarrollo**
+
+Durante la conversación, ChatGPT planteó cómo almacenar los colores generados dentro de un array.
+
+Mi respuesta fue:
+
+Con el método push, puedo ir agregando los colores a un array.
+
+Esto permitió relacionar los conocimientos adquiridos previamente sobre arrays con una funcionalidad real del proyecto.
+
+A partir de esa estructura, continué trabajando en el almacenamiento de varias paletas y su representación visual.
+
+**Evidencias:**
+
+![Captura sobre consulta realizada a ChatGPT para planificar el guardado de paletas](capturas/consulta-6.png)
+![Captura de respuesta de Chatgpt de como desarrollar el guardado con localStorage](capturas/consulta-6a.png)
+![Captura de conceptos a utilizar](capturas/consulta-6b.png)

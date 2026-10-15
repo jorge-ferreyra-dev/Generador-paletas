@@ -177,6 +177,111 @@ main {
     display: none; /*pseudoclase para elementos vacios*/
 }
 
+/* Sección de paletas guardadas */
+
+.paletas-guardadas {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+#contenedorPaletasGuardadas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+}
+
+/* Tarjeta individual */
+
+.tarjeta-paleta-guardada {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background-color: var(--color-superficie);
+    border: 2px solid var(--color-secundario);
+    border-radius: 12px;
+}
+
+/* Encabezado */
+
+.encabezado-paleta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.encabezado-paleta h3 {
+    font-size: 1rem;
+    color: var(--color-texto);
+}
+
+/* Muestras de colores */
+
+.muestras-guardadas {
+    display: flex;
+    gap: 4px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.color-guardado {
+    flex: 1;
+    min-width: 0;
+    height: 80px;
+}
+
+/* Botón guardar paleta */
+
+#btnGuardarPaleta {
+    align-self: center;
+    background-color: var(--color-acento);
+    color: var(--color-texto);
+    border: 2px solid var(--color-principal);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#btnGuardarPaleta:hover {
+    background-color: #FFE66D;
+    transform: translateY(-2px);
+}
+
+#btnGuardarPaleta:active {
+    transform: translateY(0);
+}
+
+#btnGuardarPaleta:focus-visible {
+    outline: 3px solid var(--color-secundario);
+    outline-offset: 3px;
+}
+
+/* Botón eliminar */
+
+.btn-eliminar {
+    background-color: var(--color-principal);
+    color: var(--color-superficie);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-eliminar:hover {
+    background-color: var(--color-secundario);
+}
+
+.btn-eliminar:focus-visible {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 3px;
+}
+
 /*Design Responsive*/
 /*Media query para tablets*/
 @media(max-width: 900px) {
@@ -215,5 +320,23 @@ main {
 
     main {
         padding: var(--space-md);
+    }
+
+    #contenedorPaletasGuardadas {
+        grid-template-columns: 1fr;
+    }
+
+    .color-guardado {
+        height: 65px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #btnGuardarPaleta {
+        transition: none;
+    }
+
+    #btnGuardarPaleta:hover {
+        transform: none;
     }
 }

@@ -3,7 +3,9 @@ const selectorPaleta = document.getElementById('tamanioPaleta');
 const botonGenerar = document.getElementById('btnGenerarPaleta');
 const contenedorColores = document.getElementById('contenedorColores');
 const mensajeFeedback = document.getElementById('mensajeFeedback');
-
+const botonGuardar = document.getElementById('btnGuardarPaleta');
+let paletaActual = [];
+const contenedorPaletasGuardadas = document.getElementById('contenedorPaletasGuardadas');
 
     //Funciones
 function generarColorHex() {
@@ -78,13 +80,85 @@ function copiarColor(color) {
     }, 2000);
 }
 
+function mostrarPaletasGuardadas() {
+    const paletasGuardadas = JSON.parse(localStorage.getItem('paletasGuardadas')) || [];
+
+    contenedorPaletasGuardadas.textContent = "";
+
+    paletasGuardadas.forEach(function(paleta, indice) {
+
+        // Crear tarjeta
+        const tarjetaPaleta = document.createElement('div');
+        tarjetaPaleta.classList.add('tarjeta-paleta-guardada');
+
+        // Crear encabezado
+        const encabezado = document.createElement('div');
+        encabezado.classList.add('encabezado-paleta');
+
+        const titulo = document.createElement('h3');
+        titulo.textContent = `Paleta ${indice + 1}`;
+
+        // Crear botón eliminar
+        const botonEliminar = document.createElement('button');
+        botonEliminar.type = 'button';
+        botonEliminar.classList.add('btn-eliminar');
+        botonEliminar.textContent = 'Eliminar';
+
+        // Evento para eliminar la paleta
+        botonEliminar.addEventListener('click', function() {
+
+            paletasGuardadas.splice(indice, 1);
+
+            localStorage.setItem(
+                'paletasGuardadas',
+                JSON.stringify(paletasGuardadas)
+            );
+
+            mostrarPaletasGuardadas();
+
+            mensajeFeedback.textContent = "¡Paleta eliminada!";
+
+            setTimeout(function() {
+                mensajeFeedback.textContent = "";
+            }, 2000);
+        });
+
+        encabezado.appendChild(titulo);
+        encabezado.appendChild(botonEliminar);
+
+        // Crear contenedor de colores
+        const contenedorMuestras = document.createElement('div');
+        contenedorMuestras.classList.add('muestras-guardadas');
+
+        // Recorrer los colores
+        paleta.forEach(function(color) {
+
+            const muestraGuardada = document.createElement('div');
+            muestraGuardada.classList.add('color-guardado');
+            muestraGuardada.style.backgroundColor = color;
+            muestraGuardada.title = color;
+
+            contenedorMuestras.appendChild(muestraGuardada);
+        });
+
+        // Incorporar elementos a la tarjeta
+        tarjetaPaleta.appendChild(encabezado);
+        tarjetaPaleta.appendChild(contenedorMuestras);
+
+        // Mostrar tarjeta
+        contenedorPaletasGuardadas.appendChild(tarjetaPaleta);
+    });
+}
+
     //Eventos    
 botonGenerar.addEventListener('click', function() {
     let tamanio = Number(selectorPaleta.value);
     contenedorColores.textContent = "";
+    paletaActual = [];
 
     for(let i = 0; i < tamanio ; i++){
         const color = generarColorHex();
+        paletaActual.push(color);
         const colorHsl = convertirHexAHsl(color);
         
         //Generar la tarjeta y agregarla al contenedor
@@ -123,9 +197,32 @@ botonGenerar.addEventListener('click', function() {
             copiarColor(colorHsl);
         });
     }
+
     //Generar mensaje microfeedback
         mensajeFeedback.textContent = '¡Nueva paleta generada!';
         setTimeout(function() {
             mensajeFeedback.textContent = '';
         }, 2000);
 });
+
+botonGuardar.addEventListener('click', function() {
+
+    if(paletaActual.length === 0) {
+        mensajeFeedback.textContent = "Primero debes generar una paleta";
+        setTimeout(function() {
+            mensajeFeedback.textContent = "";
+        }, 2000);
+        return;
+    }
+
+    let paletasGuardadas = JSON.parse(localStorage.getItem('paletasGuardadas')) || [];
+    paletasGuardadas.push([...paletaActual]);
+    localStorage.setItem('paletasGuardadas', JSON.stringify(paletasGuardadas));
+    mensajeFeedback.textContent = "¡Paleta guardada correctamente!";
+    setTimeout(function() {
+            mensajeFeedback.textContent = "";
+        }, 2000);
+    mostrarPaletasGuardadas();    
+});
+
+mostrarPaletasGuardadas();

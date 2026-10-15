@@ -94,3 +94,20 @@ La inteligencia artificial me permitió comprender mejor conceptos de HTML, CSS 
 Considero que su utilización fue beneficiosa porque me permitió aprender durante el proceso, analizar las sugerencias recibidas y aplicarlas en el desarrollo de la aplicación.
 
 Para consultar los prompts utilizados, sus resultados y las capturas de evidencia, ver la [Documentación del uso de IA](DOCUMENTACION-IA.md).
+
+### Evidencias del funcionamiento
+
+A continuación se presentan capturas de pantalla que muestran las principales funcionalidades del Generador de Paletas Interactivo.
+
+## Interfaz inicial:
+![Interfaz con el selector de cantidad de colores y el botón Generar paleta.](evidencias/pantalla-inicial.png)
+
+## Generación de paletas
+![Colores aleatorios y sus códigos HEX y HSL.](evidencias/paleta-generada.png)
+
+## Guardado de paletas
+![paletas almacenadas con sus botones Eliminar](evidencias/paletas-guardadas.png)
+
+## Diseño responsive
+![Cómo se adapta la aplicación a una pantalla móvil.](evidencias/vista-mobile.png)
+![Cómo se adapta la aplicación a una pantalla móvil.](evidencias/vista-mobile-2.png)
